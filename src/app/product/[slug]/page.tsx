@@ -45,6 +45,14 @@ interface ProductPageProps {
   };
 }
 
+interface Offer {
+  id: string;
+  title: string;
+  description: string;
+  type: string;
+  icon: string;
+}
+
 const productImages = [
   "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
   "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80",
@@ -86,11 +94,13 @@ const colorVariants = [
   },
 ];
 
+
+
 export default function ProductPage({ params }: ProductPageProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [offers, setOffers] = useState([]);
+  const [offers, setOffers] = useState<Offer[]>([]);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % productImages.length);
