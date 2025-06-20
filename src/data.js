@@ -1,8 +1,8 @@
 // Central data file for Astha Furnitures website
 
 export const siteConfig = {
-  name: "Astha Furnitures",
-  description: "Transform your home with premium furniture",
+  name: "Astha Furnitures & Architecture",
+  // description: "Transform your home with premium furniture",
   phone: "+91 98765 43210",
   email: "info@asthafurnitures.com",
   address: "123 Furniture Street, Mumbai, India",

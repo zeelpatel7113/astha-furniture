@@ -40,18 +40,18 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             {/* Logo Icon */}
-            <div className="relative w-14 h-14 flex items-center justify-center rounded-xl overflow-hidden bg-gradient-to-br shadow-md group-hover:shadow-lg transition-all duration-300">
+            {/* <div className="relative w-14 h-14 flex items-center justify-center rounded-xl overflow-hidden bg-gradient-to-br shadow-md group-hover:shadow-lg transition-all duration-300"> */}
               <Image
                 src="/images/astha logo transparent.png"
                 alt="Astha Furnitures Logo"
-                width={56}
-                height={56}
-                className="object-cover w-20 h-20"
+                width={60}
+                height={60}
+                className="object-cover w-24 h-24"
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                 }}
               />
-            </div>
+            {/* </div> */}
 
             {/* Logo Text */}
             <div className="flex flex-col leading-tight">
