@@ -7,6 +7,7 @@ import OurHappyCustomers from "@/components/OurHappyCustomers";
 import DecorBrands from "@/components/DecorBrands";
 import Footer from "@/components/Footer";
 import ContactModal from "@/components/ContactModal";
+import SummerSaleBanner from "@/components/SummerSaleBanner";
 
 export default function Page() {
   return (
@@ -14,6 +15,7 @@ export default function Page() {
       <Header />
       <ContactModal />
       <HeroSection />
+      <SummerSaleBanner />
       <AboutUsSection />
       <ProductGrid
         title="Best Sellers"

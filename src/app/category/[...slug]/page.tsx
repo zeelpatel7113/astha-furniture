@@ -8,7 +8,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
 import { ChevronRight, Filter, Grid, List, RotateCcw, X } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { sampleProducts } from "@/data";
 
 interface CategoryPageProps {
   params: {
@@ -30,6 +31,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     [],
   );
   const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState(sampleProducts);
 
   const capitalizeWords = (str: string) => {
     return str.replace(/\b\w/g, (char) => char.toUpperCase());
@@ -109,6 +111,36 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     setSelectedStorage([]);
     setSelectedStorageTypes([]);
   };
+
+  // Filter products based on selected filters
+  useEffect(() => {
+    let filtered = sampleProducts.filter((product) => {
+      // Filter by category
+      const categoryMatch =
+        product.category.toLowerCase().includes(mainCategory.toLowerCase()) ||
+        (subCategory &&
+          product.category.toLowerCase().includes(subCategory.toLowerCase()));
+
+      // Filter by price range
+      const priceMatch =
+        product.price >= priceRange[0] && product.price <= priceRange[1];
+
+      // For now, we'll just filter by category and price
+      // In a real app, you'd have material, finish, storage data in products
+      return categoryMatch && priceMatch;
+    });
+
+    setFilteredProducts(filtered);
+  }, [
+    mainCategory,
+    subCategory,
+    priceRange,
+    selectedMaterials,
+    selectedFinishes,
+    selectedStorage,
+    selectedStorageTypes,
+    fastDelivery,
+  ]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -520,6 +552,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             <ProductGrid
               title={`${pageTitle} Collection`}
               subtitle={`Browse our extensive range of ${pageTitle.toLowerCase()} products`}
+              products={filteredProducts}
+              bgColor="bg-white"
             />
           </div>
         </div>

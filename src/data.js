@@ -1,7 +1,7 @@
 // Central data file for Astha Furnitures website
 
 export const siteConfig = {
-  name: "Astha Furnitures & Architecture",
+  name: "Astha Furnitures & Interiors",
   // description: "Transform your home with premium furniture",
   phone: "+91 98765 43210",
   email: "info@asthafurnitures.com",
