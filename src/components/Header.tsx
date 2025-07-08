@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Phone, HelpCircle, Menu, X } from "lucide-react";
+import { Phone, HelpCircle, Menu, X, Search } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
@@ -62,18 +62,32 @@ export default function Header() {
             {/* </div> */}
 
             {/* Logo Text */}
-            <div className="flex flex-col leading-tight">
+            {/* <div className="flex flex-col leading-tight">
               <span className="text-xl sm:text-2xl font-bold text-slate-700 group-hover:text-amber-700 transition-colors">
                 {siteConfig.name}
               </span>
-              {/* <span className="text-sm text-slate-500 font-medium tracking-wide">
-                Premium Furniture Store
-              </span> */}
-            </div>
+              
+            </div> */}
           </Link>
 
           {/* Action Buttons */}
           <div className="flex items-center space-x-3 ">
+            {/* Search Bar */}
+            <div className="hidden md:flex items-center relative">
+              <input
+                type="text"
+                placeholder="Search products..."
+                className="w-64 px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-amber-700 focus:outline-none"
+              />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute right-2 hover:bg-transparent"
+              >
+                <Search className="h-5 w-5 text-gray-500 hover:text-amber-700" />
+              </Button>
+            </div>
+
             <Button
               variant="outline"
               size="sm"
@@ -82,14 +96,14 @@ export default function Header() {
               <Phone className="h-4 w-4" />
               Call Now
             </Button>
-            <Button
+            {/* <Button
               variant="outline"
               size="sm"
               className="hidden md:flex items-center gap-2 border-2 border-gray-300 text-gray-700 hover:bg-gray-100 hover:border-gray-400 font-semibold transition-all duration-300 shadow-sm hover:shadow-md"
             >
               <HelpCircle className="h-4 w-4" />
               Help Center
-            </Button>
+            </Button> */}
             <Button
               variant="ghost"
               size="icon"
@@ -157,14 +171,14 @@ export default function Header() {
                   <Phone className="h-4 w-4" />
                   Call Now
                 </Button>
-                <Button
+                {/* <Button
                   variant="outline"
                   size="sm"
                   className="flex items-center justify-center gap-2 border-2 border-gray-300 text-gray-700 hover:bg-gray-100 font-semibold py-2"
                 >
                   <HelpCircle className="h-4 w-4" />
                   Help Center
-                </Button>
+                </Button> */}
               </div>
             </nav>
           </div>
