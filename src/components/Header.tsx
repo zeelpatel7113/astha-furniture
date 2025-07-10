@@ -11,6 +11,7 @@ import Image from "next/image";
 export default function Header() {
   const [showBanner, setShowBanner] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
   const pathname = usePathname();
 
   const isActiveRoute = (href: string) => {
@@ -48,7 +49,6 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             {/* Logo Icon */}
-            {/* <div className="relative w-14 h-14 flex items-center justify-center rounded-xl overflow-hidden bg-gradient-to-br shadow-md group-hover:shadow-lg transition-all duration-300"> */}
             <Image
               src="/images/astha logo transparent.png"
               alt="Astha Furnitures Logo"
@@ -59,30 +59,24 @@ export default function Header() {
                 e.currentTarget.style.display = "none";
               }}
             />
-            {/* </div> */}
-
             {/* Logo Text */}
-            {/* <div className="flex flex-col leading-tight">
-              <span className="text-xl sm:text-2xl font-bold text-slate-700 group-hover:text-amber-700 transition-colors">
-                {siteConfig.name}
-              </span>
-              
-            </div> */}
           </Link>
 
           {/* Action Buttons */}
           <div className="flex items-center space-x-3 ">
-            {/* Search Bar */}
+            {/* Desktop Search Bar - Improved */}
             <div className="hidden md:flex items-center relative">
               <input
                 type="text"
                 placeholder="Search products..."
-                className="w-64 px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-amber-700 focus:outline-none"
+                className={`w-64 lg:w-72 px-4 py-2 rounded-lg border-2 ${isSearchFocused ? 'border-amber-700 shadow-md' : 'border-gray-200'} focus:border-amber-700 focus:outline-none transition-all duration-300`}
+                onFocus={() => setIsSearchFocused(true)}
+                onBlur={() => setIsSearchFocused(false)}
               />
               <Button
                 variant="ghost"
                 size="icon"
-                className="absolute right-2 hover:bg-transparent"
+                className="absolute right-2 hover:bg-amber-50 transition-colors duration-200"
               >
                 <Search className="h-5 w-5 text-gray-500 hover:text-amber-700" />
               </Button>
@@ -90,7 +84,7 @@ export default function Header() {
 
             <Button
               variant="outline"
-              size="sm"
+              size="lg"
               className="hidden md:flex items-center gap-2 border-2 border-amber-700 text-amber-700 hover:bg-amber-700 hover:text-white font-semibold transition-all duration-300 shadow-sm hover:shadow-md"
             >
               <Phone className="h-4 w-4" />
@@ -121,6 +115,7 @@ export default function Header() {
         <div className="item ">
           {/* Center Navigation - Desktop */}
           <nav className="hidden lg:flex items-center justify-center space-x-1 flex-1 mx-8 gap-4 border-t pt-2">
+            
             {navigationItems.map((item) => (
               <Link
                 key={item.name}
@@ -148,6 +143,22 @@ export default function Header() {
         {isMobileMenuOpen && (
           <div className="md:hidden fixed left-0 right-0 top-[64px] bg-white border-b border-gray-200 shadow-xl max-h-[calc(100vh-64px)] overflow-y-auto">
             <nav className="flex flex-col py-4 gap-2">
+              {/* Mobile Search Bar - Improved */}
+              <div className="flex items-center relative px-4 py-2">
+                <input
+                  type="text"
+                  placeholder="Search furniture, decor..."
+                  className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-amber-700 focus:outline-none shadow-sm focus:shadow-md transition-all duration-300"
+                  autoFocus
+                />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute right-6 hover:bg-amber-50"
+                >
+                  <Search className="h-5 w-5 text-gray-500 hover:text-amber-700" />
+                </Button>
+              </div>
               {navigationItems.map((item) => (
                 <Link
                   key={item.name}
@@ -165,7 +176,7 @@ export default function Header() {
               <div className="flex flex-col gap-2 p-4">
                 <Button
                   variant="outline"
-                  size="sm"
+                  size="lg"
                   className="flex items-center justify-center gap-2 border-2 border-amber-700 text-amber-700 hover:bg-amber-700 hover:text-white font-semibold py-2"
                 >
                   <Phone className="h-4 w-4" />
