@@ -14,7 +14,7 @@ export default function Page() {
     <div className="min-h-screen bg-white">
       <Header />
       <ContactModal />
-      <HeroSection />
+      {/* <HeroSection /> */}
       <SummerSaleBanner />
       <AboutUsSection />
       <ProductGrid

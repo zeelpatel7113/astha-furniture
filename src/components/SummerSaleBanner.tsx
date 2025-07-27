@@ -39,7 +39,7 @@ export default function SummerSaleBanner() {
   ];
 
   return (
-    <section className="relative overflow-hidden rounded-xl shadow-lg my-8">
+    <section className="relative overflow-hidden rounded-xl shadow-lg my-8 bg-orange-200">
       {/* Left Navigation Button */}
       <button
         className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/30 hover:bg-white/50 rounded-full p-2 shadow-md transition-all duration-300"
